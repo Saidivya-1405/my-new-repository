@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Plant Growth Simulator</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #e8f6e3;
+        padding-top: 40px;
+    }
+    h1 {
+        color: #246232;
+    }
+    #plant {
+        font-size: 40px;
+        margin: 20px;
+    }
+    button {
+        padding: 10px 20px;
+        margin: 5px;
+        font-size: 16px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+    }
+    .water {
+        background-color: #4CAF50;
+        color: white;
+    }
+    .reset {
+        background-color: #f44336;
+        color: white;
+    }
+</style>
+</head>
+<body>
+
+<h1>Plant Growth Simulator</h1>
+<div id="stageName">Initializing...</div>
+<div id="plant">🌱</div>
+
+<button class="water" onclick="nextStage()">Water Plant</button>
+<button class="reset" onclick="resetPlant()">Reset</button>
+
+<script>
+    let stage = 0;
+
+    const stages = [
+        { name: "Display Seed", icon: "🌱" },
+        { name: "Stage 1: Sprout Seed", icon: "🌿" },
+        { name: "Stage 2: Stem grows from seed", icon: "🌿🌿" },
+        { name: "Stage 3: Add leaves", icon: "🌿🍃" },
+        { name: "Stage 4: Flower blooms", icon: "🌸" },
+        { name: "Full Bloom", icon: "🌺" }
+    ];
+
+    function drawPlant() {
+        document.getElementById("stageName").innerText = stages[stage].name;
+        document.getElementById("plant").innerText = stages[stage].icon;
+    }
+
+    function nextStage() {
+        if (stage < stages.length - 1) {
+            stage++;
+            drawPlant();
+        }
+    }
+
+    function resetPlant() {
+        stage = 0;
+        drawPlant();
+    }
+
+    // Initialize
+    drawPlant();
+</script>
+
+</body>
+</html>
